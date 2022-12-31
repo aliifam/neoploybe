@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  pgsql:
+    image: "postgres"
+    container_name: "db_neoploy"
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_USER: "user"
+      POSTGRES_DB: "neoploy"
