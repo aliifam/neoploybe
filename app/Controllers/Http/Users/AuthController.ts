@@ -22,6 +22,8 @@ export default class AuthController {
 
         Event.emit("new:user", { newUser: user });
 
+        // user?.sendActivationEmail();
+
         return response.status(201).send({
             success:
                 "Registration successful, check your email inbox for a verification email",

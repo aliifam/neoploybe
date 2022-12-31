@@ -9,6 +9,7 @@ export default class User {
         const appName = Env.get("APP_NAME");
         const defaultFromEmail = Env.get("DEFAULT_FROM_EMAIL");
         const currentYear = new Date().getFullYear();
+        console.log("Email Verifiation Sended");
         const url = Route.builder()
             .params({ email: newUser.email })
             .prefixUrl(appDomain)
