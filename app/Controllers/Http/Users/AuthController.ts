@@ -2,6 +2,7 @@ import type { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import User from "App/Models/User";
 import { schema, rules } from "@ioc:Adonis/Core/Validator";
 import { DateTime } from "luxon";
+import Event from "@ioc:Adonis/Core/Event";
 
 export default class AuthController {
     public async register({ request, response }: HttpContextContract) {
@@ -19,7 +20,7 @@ export default class AuthController {
         const data = await request.validate({ schema: validation });
         const user = await User.create(data);
 
-        user?.sendActivationEmail();
+        Event.emit("new:user", { newUser: user });
 
         return response.status(201).send({
             success:
